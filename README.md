@@ -1,216 +1,183 @@
 # 🌍 Interactive 3D Globe Visualization
 
-A stunning, 3D globe visualization with animated transaction flows, built with Globe.gl and Three.js.
+A stunning, fully customizable 3D globe visualization that displays global connections with animated arcs, city markers, and country dots. Perfect for showcasing international business connections, travel routes, or global network visualizations.
 
 ## ✨ Features
 
-- **Dark Space Theme**: Beautiful gradient background with animated stars
-- **Glowing Country Dots**: 18 major cities represented as pulsing points
-- **Animated Transaction Arcs**: Flowing lines showing connections between locations
-- **Auto-Rotation**: Smooth, continuous globe rotation
-- **Interactive Controls**: Zoom, pan, and rotate with mouse/touch
-- **Fully Responsive**: Adapts to all screen sizes (100vw × 100vh)
-- **Performance Optimized**: Hardware-accelerated WebGL rendering
-- **Tooltip Hover**: Country names appear on hover
-- **Zero Dependencies**: Pure HTML, CSS, and JavaScript
+- **Interactive 3D Globe** - Smooth auto-rotation with drag controls
+- **Animated Connection Arcs** - Flowing dashed lines showing connections between cities
+- **City Markers** - Customizable markers for USA cities and international destinations
+- **Country Dots** - Dotted representation of all countries
+- **Atmospheric Glow** - Beautiful atmosphere effect around the globe
+- **Fully Customizable** - Easy-to-modify color scheme, sizes, and locations
+- **Responsive Design** - Adapts to any screen size
+- **Performance Optimized** - Smooth animations even on lower-end devices
 
-## 📁 Project Structure
+## 🎨 Customization
 
-```
-my-globe/
-├── index.html    # Main HTML file
-├── style.css     # Fullscreen dark styling
-├── script.js     # Globe initialization & animations
-└── README.md     # This file
-```
+All major visual elements can be customized through variables at the top of the file:
 
-## 🚀 Quick Start
-
-### Local Development
-
-1. **Clone or download** this folder
-2. Open `index.html` in a modern browser
-3. That's it! No build process needed.
-
-### GitHub Pages Deployment
-
-1. **Create a new repository** on GitHub (e.g., `my-globe`)
-2. **Upload all files** to the repository
-3. **Enable GitHub Pages**:
-   - Go to repository Settings
-   - Navigate to Pages section
-   - Source: Deploy from branch
-   - Branch: `main` (or `master`)
-   - Folder: `/ (root)`
-   - Click Save
-4. **Access your live globe** at:
-   ```
-   https://yourusername.github.io/my-globe/
-   ```
-
-## 🔧 Customization
-
-### Adding New Locations
-
-Edit the `locations` array in `script.js`:
-
+### Colors
 ```javascript
-const locations = [
-    { name: 'Your City', lat: 40.7128, lng: -74.0060, size: 0.8 },
-    // Add more locations...
+const GLOBE_SURFACE_COLOR = 0x90EE90;        // Globe surface
+const COUNTRY_DOT_COLOR = '#0D5C2E';         // Country dots
+const ATMOSPHERE_COLOR = '#3BF493';          // Atmosphere glow
+const USA_MARKER_COLOR = '#0D8F5F';          // USA markers
+const DESTINATION_MARKER_COLOR = '#5A1BAF';  // Destination markers
+const ARC_COLORS = ['#1B7F4D', '#0575C5', '#5A1BAF']; // Arc colors
+```
+
+### Dot Density & Appearance
+```javascript
+const HEX_POLYGON_RESOLUTION = 4;    // Dot density (1-15)
+const HEX_POLYGON_MARGIN = 0.7;      // Space between dots (0-1)
+const HEX_DOT_RESOLUTION = 2;        // Individual dot detail (1-10)
+```
+
+### Marker Sizes
+```javascript
+const USA_MARKER_SIZE = 0.25;              // USA city markers
+const DESTINATION_MARKER_SIZE = 0.2;       // International markers
+```
+
+### Arc Customization
+```javascript
+const ARC_ALTITUDE = 0.35;           // Arc height (0-1)
+const ARC_STROKE = 0.03;             // Line thickness
+const ARC_DASH_LENGTH = 0.25;        // Dash length
+const ARC_DASH_GAP = 1.5;            // Gap between dashes
+const ARC_ANIMATION_SPEED = 5000;    // Animation speed (ms)
+```
+
+### Camera View
+```javascript
+globe.pointOfView({ lat: 45, lng: 0, altitude: 1.8 }, 0);
+```
+- **lat**: Vertical angle (0-90 for top view, negative for bottom)
+- **lng**: Horizontal rotation (-180 to 180)
+- **altitude**: Zoom distance (1.0 = close, 2.5+ = far)
+
+## 📍 Adding Locations
+
+### USA Points
+```javascript
+const usaPoints = [
+    { name: 'New York', lat: 40.7128, lng: -74.0060 },
+    { name: 'San Francisco', lat: 37.7749, lng: -122.4194 },
+    // Add more cities...
 ];
 ```
 
-### Changing Arc Colors
-
-Modify the `color` property in the `arcs` array:
-
+### Destinations
 ```javascript
-const arcs = [
-    { startLat: 40.7128, startLng: -74.0060, endLat: 51.5074, endLng: -0.1278, color: '#00d4ff' },
-    // Supported colors: '#00d4ff', '#0080ff', '#ffffff', or any hex color
+const destinations = [
+    { name: 'United Kingdom', lat: 51.5074, lng: -0.1278 },
+    { name: 'Sweden', lat: 59.3293, lng: 18.0686 },
+    // Add more destinations...
 ];
 ```
 
-### Adjusting Rotation Speed
+## 🚀 Getting Started
 
-Change the `autoRotateSpeed` value:
+### Prerequisites
+- A web server (live-server, http-server, or similar)
+- Modern web browser with WebGL support
 
-```javascript
-globe.controls().autoRotateSpeed = 0.5; // Decrease for slower, increase for faster
+### Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/globe-visualization.git
+cd globe-visualization
 ```
 
-### Modifying Arc Animation Speed
-
-Update the `arcDashAnimateTime`:
-
-```javascript
-.arcDashAnimateTime(4000) // Time in milliseconds (4000 = 4 seconds)
-```
-
-## 🌐 WordPress Embedding
-
-### Standard Embed
-
-Add this code to any WordPress page or post (HTML block):
-
+2. Create an HTML file:
 ```html
-<iframe 
-  src="https://yourusername.github.io/my-globe/" 
-  width="100%" 
-  height="600" 
-  style="border:none; display:block;">
-</iframe>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Globe Visualization</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        #globeViz {
+            width: 100vw;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <div id="globeViz"></div>
+    <script src="https://unpkg.com/three@0.128.0/build/three.min.js"></script>
+    <script src="https://unpkg.com/globe.gl"></script>
+    <script src="globe.js"></script>
+</body>
+</html>
 ```
 
-### Fullscreen Embed
+3. Add your JavaScript code to `globe.js`
 
-For a full-page experience:
+4. Start a local server:
+```bash
+# Using Python
+python -m http.server 8000
 
-```html
-<iframe 
-  src="https://yourusername.github.io/my-globe/" 
-  width="100%" 
-  height="100vh" 
-  style="border:none; display:block; margin:0; padding:0;">
-</iframe>
+# Using Node.js
+npx http-server
+
+# Using PHP
+php -S localhost:8000
 ```
 
-### Responsive Container
+5. Open `http://localhost:8000` in your browser
 
-Wrap in a responsive container:
+## 🛠️ Technologies Used
 
-```html
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe 
-    src="https://yourusername.github.io/my-globe/" 
-    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;">
-  </iframe>
-</div>
-```
+- **[Globe.GL](https://globe.gl/)** - 3D globe visualization library
+- **[Three.js](https://threejs.org/)** - 3D graphics library
+- **Vanilla JavaScript** - No framework dependencies
 
-## 🎨 Color Schemes
+## 📖 Usage Examples
 
-Change the visual theme by modifying these values:
-
-**Cyan Theme (Default)**
-- Primary: `#00d4ff`
-- Secondary: `#0080ff`
-- Accent: `#ffffff`
-
-**Purple Theme**
+### View Presets
 ```javascript
-.pointColor(() => '#b794f4')
-.atmosphereColor('#b794f4')
-// Update arc colors to: '#b794f4', '#805ad5', '#ffffff'
+// Top view
+globe.pointOfView({ lat: 90, lng: 0, altitude: 2.0 }, 0);
+
+// USA front view
+globe.pointOfView({ lat: 30, lng: -95, altitude: 1.6 }, 0);
+
+// Europe view
+globe.pointOfView({ lat: 50, lng: 10, altitude: 1.8 }, 0);
+
+// Side view
+globe.pointOfView({ lat: 0, lng: -90, altitude: 2.0 }, 0);
 ```
 
-**Green Theme**
+### Rotation Speed
 ```javascript
-.pointColor(() => '#10b981')
-.atmosphereColor('#10b981')
-// Update arc colors to: '#10b981', '#059669', '#ffffff'
+// Faster rotation
+globe.controls().autoRotateSpeed = 1.0;
+
+// Slower rotation
+globe.controls().autoRotateSpeed = 0.2;
+
+// Disable rotation
+globe.controls().autoRotate = false;
 ```
-
-## ⚡ Performance Tips
-
-1. **Limit data points**: Keep locations under 30 for best performance
-2. **Reduce pixel ratio**: Change `Math.min(window.devicePixelRatio, 2)` to `1` for lower-end devices
-3. **Disable bump map**: Remove `.bumpImageUrl()` line for faster loading
-4. **Adjust arc count**: Fewer arcs = better performance
-
-## 🛠️ Browser Support
-
-- ✅ Chrome 90+
-- ✅ Firefox 88+
-- ✅ Safari 14+
-- ✅ Edge 90+
-- ✅ Mobile browsers (iOS Safari, Chrome Mobile)
-
-## 📦 Dependencies (via CDN)
-
-- **Globe.gl**: Latest version from unpkg
-- **Three.js**: Included with Globe.gl
-- **Earth textures**: From three-globe example assets
-
-## 🐛 Troubleshooting
-
-**Globe not appearing?**
-- Check browser console for errors
-- Ensure you have internet connection (CDN resources)
-- Verify all three files are in the same directory
-
-**Performance issues?**
-- Reduce number of arcs and points
-- Lower pixel ratio in `script.js`
-- Disable auto-rotation
-
-**Arcs not animating?**
-- Check that `.arcDashAnimateTime()` is set
-- Verify arc data has valid coordinates
-
-## 📄 License
-
-Free to use for personal and commercial projects. Attribution appreciated but not required.
 
 ## 🎯 Use Cases
 
-- Company websites (transaction/network visualization)
-- Data dashboards
-- Portfolio projects
-- Educational demonstrations
-- Marketing landing pages
-- SaaS product showcases
-
-## 🌟 Credits
-
-Built with:
-- [Globe.gl](https://globe.gl/) by Vasco Asturiano
-- [Three.js](https://threejs.org/) for 3D rendering
-- Earth textures from NASA
+- **Business Presentations** - Showcase global operations and partnerships
+- **Travel Portfolios** - Display visited countries and routes
+- **Network Visualizations** - Illustrate data flow or connections
+- **Educational Tools** - Geography and global awareness
+- **Website Headers** - Eye-catching landing page elements
 
 ---
-
-**Made with ❤️ for beautiful data visualization**
-
-For issues or questions, open an issue on GitHub.
