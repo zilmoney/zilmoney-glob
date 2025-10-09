@@ -33,7 +33,7 @@ const DESTINATION_MARKER_SIZE = 0.2;         // Size of international destinatio
 // ⚡ ARC/LINE CUSTOMIZATION
 // ============================================
 const ARC_ALTITUDE = 0.35;                   // How high arcs float above globe (0-1) - INCREASED MORE
-const ARC_STROKE = 0.25;                     // Arc line thickness - INCREASED MORE
+const ARC_STROKE = 0.05;                     // Arc line thickness - INCREASED MORE
 const ARC_DASH_LENGTH = 0.25;                // Length of each dash in the line - INCREASED MORE
 const ARC_DASH_GAP = 1.5;                    // Gap between dashes - DECREASED MORE
 const ARC_ANIMATION_SPEED = 5000;            // Animation speed in milliseconds (lower = faster)
