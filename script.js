@@ -154,12 +154,12 @@ function initGlobe(countries) {
     // Configure camera and controls
     globe.controls().autoRotate = true;
     globe.controls().autoRotateSpeed = 0.35;
-    globe.controls().enableZoom = true;
+    globe.controls().enableZoom = false;
     globe.controls().minDistance = 120;
     globe.controls().maxDistance = 600;
 
     // Set initial camera position
-    globe.pointOfView({ lat: 25, lng: -60, altitude: 0.8 }, 0);
+    globe.pointOfView({ lat: 25, lng: -60, altitude: 1.3 }, 0);
 
     // Handle window resize
     window.addEventListener('resize', () => {
