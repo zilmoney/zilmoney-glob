@@ -1,6 +1,6 @@
 # 🌍 Interactive 3D Globe Visualization
 
-A stunning, Stripe-like 3D globe visualization with animated transaction flows, built with Globe.gl and Three.js.
+A stunning, 3D globe visualization with animated transaction flows, built with Globe.gl and Three.js.
 
 ## ✨ Features
 
