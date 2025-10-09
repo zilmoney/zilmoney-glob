@@ -2,8 +2,8 @@
 // 🎨 COLOR CUSTOMIZATION SECTION
 // ============================================
 // Change these color values to customize your globe appearance
-const GLOBE_SURFACE_COLOR = 0x0D5C2E;        // Globe surface color (hex: DARK GREEN) - CHANGED
-const COUNTRY_DOT_COLOR = '#90EE90';         // Country dots color (hex string: LIGHT GREEN) - CHANGED
+const GLOBE_SURFACE_COLOR = 0x90EE90;        // Globe surface color (hex: LIGHT GREEN)
+const COUNTRY_DOT_COLOR = '#0D5C2E';         // Country dots color (hex string: DARK GREEN)
 const ATMOSPHERE_COLOR = '#3BF493';          // Atmosphere glow color (hex string: bright green)
 const USA_MARKER_COLOR = '#0D8F5F';          // USA city markers color (hex string: darker emerald)
 const DESTINATION_MARKER_COLOR = '#5A1BAF';  // International destination markers (hex string: darker purple)
@@ -111,14 +111,14 @@ function initGlobe(countries) {
     const globe = Globe()
         (document.getElementById('globeViz'))
         
-        // Globe surface color - DARK GREEN
+        // Globe surface color - LIGHT GREEN
         .globeMaterial(new THREE.MeshPhongMaterial({
             color: GLOBE_SURFACE_COLOR,
             opacity: 0.95,
             transparent: true
         }))
         
-        // Country dots - LIGHT GREEN (so they show on dark surface)
+        // Country dots - DARK GREEN
         .hexPolygonsData(countries.features)
         .hexPolygonResolution(HEX_POLYGON_RESOLUTION)
         .hexPolygonMargin(HEX_POLYGON_MARGIN)
