@@ -159,7 +159,7 @@ function initGlobe(countries) {
     globe.controls().maxDistance = 600;
 
     // Set initial camera position
-    globe.pointOfView({ lat: 25, lng: -60, altitude: 1.6 }, 0);
+    globe.pointOfView({ lat: 45, lng: 0, altitude: 1.8 }, 0);
 
     // Handle window resize
     window.addEventListener('resize', () => {
