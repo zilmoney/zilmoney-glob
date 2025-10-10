@@ -26,7 +26,7 @@ html, body {
 #globeViz canvas {
     display: block;
     width: 100% !important;
-    height: 100% !important;
+    height: 250% !important;
 }
 
 ::-webkit-scrollbar {
