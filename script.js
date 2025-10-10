@@ -3,7 +3,7 @@
 // ============================================
 // Change these color values to customize your globe appearance
 const GLOBE_SURFACE_COLOR = 0x90EE90;        // Globe surface color (hex: LIGHT GREEN)
-const COUNTRY_DOT_COLOR = '#0D5C2E';         // Country dots color (hex string: DARK GREEN)
+const COUNTRY_DOT_COLOR = '#0d361e';         // Country dots color (hex string: DARK GREEN)
 const ATMOSPHERE_COLOR = '#3BF493';          // Atmosphere glow color (hex string: bright green)
 const USA_MARKER_COLOR = '#0D8F5F';          // USA city markers color (hex string: darker emerald)
 const DESTINATION_MARKER_COLOR = '#5A1BAF';  // International destination markers (hex string: darker purple)
@@ -33,7 +33,7 @@ const DESTINATION_MARKER_SIZE = 0.2;         // Size of international destinatio
 // ⚡ ARC/LINE CUSTOMIZATION
 // ============================================
 const ARC_ALTITUDE = 0.35;                   // How high arcs float above globe (0-1) - INCREASED MORE
-const ARC_STROKE = 0.03;                     // Arc line thickness - INCREASED MORE
+const ARC_STROKE = 0.05;                     // Arc line thickness - INCREASED MORE
 const ARC_DASH_LENGTH = 0.25;                // Length of each dash in the line - INCREASED MORE
 const ARC_DASH_GAP = 1.5;                    // Gap between dashes - DECREASED MORE
 const ARC_ANIMATION_SPEED = 5000;            // Animation speed in milliseconds (lower = faster)
