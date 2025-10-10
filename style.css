@@ -29,6 +29,12 @@ body {
 
 @media (max-width: 768px) {
     body {
-        background: #ffffff;
+        background: #1a3a52;
+    }
+    #globeViz {
+    width: 100% !important;
+    height: 100% !important;
+    position: relative;
+    z-index: 2;
     }
 }
