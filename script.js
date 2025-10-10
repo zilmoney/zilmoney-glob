@@ -2,19 +2,19 @@
 // 🎨 COLOR CUSTOMIZATION SECTION
 // ============================================
 // Change these color values to customize your globe appearance
-const GLOBE_SURFACE_COLOR = 0x90EE90;        // Globe surface color (hex: LIGHT GREEN)
-const COUNTRY_DOT_COLOR = '#0d361e';         // Country dots color (hex string: DARK GREEN)
-const ATMOSPHERE_COLOR = '#3BF493';          // Atmosphere glow color (hex string: bright green)
-const USA_MARKER_COLOR = '#0D8F5F';          // USA city markers color (hex string: darker emerald)
-const DESTINATION_MARKER_COLOR = '#5A1BAF';  // International destination markers (hex string: darker purple)
+const GLOBE_SURFACE_COLOR = 0x0d1f2d;        // Globe surface color (hex: DARK NAVY BLUE)
+const COUNTRY_DOT_COLOR = '#5aaed8';         // Country dots color (hex string: LIGHT BLUE)
+const ATMOSPHERE_COLOR = '#00d9ff';          // Atmosphere glow color (hex string: bright cyan)
+const USA_MARKER_COLOR = '#5aaed8';          // USA city markers color (hex string: light blue)
+const DESTINATION_MARKER_COLOR = '#ff0066';  // International destination markers (hex string: pink/magenta)
 
 // Arc colors - you can add more colors to this array
-const ARC_COLORS = ['#1B7F4D', '#0575C5', '#5A1BAF']; // Darker Green, Darker Blue, Darker Purple
+const ARC_COLORS = ['#ff0066', '#ffd700', '#00d9ff']; // Pink/Magenta, Yellow/Gold, Cyan
 
 // Lighting colors
-const GREEN_LIGHT_COLOR = 0x1B7F4D;          // Green accent light
-const PURPLE_LIGHT_COLOR = 0x5A1BAF;         // Purple accent light
-const BLUE_LIGHT_COLOR = 0x0575C5;           // Blue accent light
+const GREEN_LIGHT_COLOR = 0x00d9ff;          // Cyan accent light
+const PURPLE_LIGHT_COLOR = 0xff0066;         // Pink/Magenta accent light
+const BLUE_LIGHT_COLOR = 0x5aaed8;           // Blue accent light
 
 // ============================================
 // 📏 DOT DENSITY & SIZE CUSTOMIZATION
@@ -111,14 +111,14 @@ function initGlobe(countries) {
     const globe = Globe()
         (document.getElementById('globeViz'))
         
-        // Globe surface color - LIGHT GREEN
-        .globeMaterial(new THREE.MeshPhongMaterial({
+        // Globe surface color - ONLY DARK NAVY BLUE
+        .globeMaterial(new THREE.MeshBasicMaterial({
             color: GLOBE_SURFACE_COLOR,
             opacity: 0.95,
             transparent: true
         }))
         
-        // Country dots - DARK GREEN
+        // Country dots - LIGHT BLUE
         .hexPolygonsData(countries.features)
         .hexPolygonResolution(HEX_POLYGON_RESOLUTION)
         .hexPolygonMargin(HEX_POLYGON_MARGIN)
@@ -178,29 +178,14 @@ function initGlobe(countries) {
             }
         });
         
-        // Bright ambient light
-        const ambientLight = new THREE.AmbientLight(0xffffff, 1.5);
+        // Reduced ambient light to show dark globe surface
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.3);
         scene.add(ambientLight);
         
-        // Directional light for depth
-        const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+        // Reduced directional light for depth
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 0.15);
         directionalLight.position.set(-1, 1, 1);
         scene.add(directionalLight);
-        
-        // Green accent
-        const greenLight = new THREE.PointLight(GREEN_LIGHT_COLOR, 0.4, 400);
-        greenLight.position.set(-200, 100, 50);
-        scene.add(greenLight);
-        
-        // Purple glow
-        const purpleLight = new THREE.PointLight(PURPLE_LIGHT_COLOR, 0.4, 400);
-        purpleLight.position.set(150, 100, 150);
-        scene.add(purpleLight);
-        
-        // Blue accent
-        const blueLight = new THREE.PointLight(BLUE_LIGHT_COLOR, 0.4, 400);
-        blueLight.position.set(0, 150, -100);
-        scene.add(blueLight);
     });
 
     // Performance optimization
