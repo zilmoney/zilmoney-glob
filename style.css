@@ -1,17 +1,8 @@
-html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
+
+body {
     overflow: hidden;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     background: #1a3a52;
-}
-
-.container {
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-    background: #ffffff;
     position: relative;
 }
 
@@ -29,4 +20,10 @@ html, body {
 body {
     -ms-overflow-style: none;
     scrollbar-width: none;
+}
+
+@media (max-width: 768px) {
+    body {
+        background: #1a3a52;
+    }
 }
